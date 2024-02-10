@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "193602382820",
-    "project_id": "proyectojuegos-3b21f",
-    "storage_bucket": "proyectojuegos-3b21f.appspot.com"
+    "project_number": "183602559852",
+    "project_id": "proyectojuego-3ccbb",
+    "storage_bucket": "proyectojuego-3ccbb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:193602382820:android:24d76a8311d98ea730f5f1",
+        "mobilesdk_app_id": "1:183602559852:android:f1db7d8297c2db547a9149",
         "android_client_info": {
           "package_name": "com.example.proyecto_juegos"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDEP_i51zw1XvcCP9LYnqZ3nAVi7sVkwFs"
+          "current_key": "AIzaSyBlFwfEeS1V4k0mxZ9kB1ZXUwRkssK6yYU"
         }
       ],
       "services": {

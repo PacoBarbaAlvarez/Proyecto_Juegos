@@ -15,11 +15,9 @@ open class ActivityWithMenus: AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        //Relacionamos la clase con el layout del menú que hemos creado:
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
 
-        //Desactivar la opción de la actividad en la que ya estamos:
         for (i in 0 until menu.size()) {
             if (i == actividadActual) menu.getItem(i).isEnabled = false
             else menu.getItem(i).isEnabled = true
@@ -31,31 +29,27 @@ open class ActivityWithMenus: AppCompatActivity() {
         return when (item.itemId) {
             R.id.mostrar -> {
                 actividadActual = 0;
-                //Hacemos que se habra la pantalla del listado de productos
-                val intent = Intent(this, Principal::class.java)
+                val intent = Intent(this, Listado::class.java)
                 startActivity(intent)
                 true
             }
 
             R.id.añadir -> {
-                actividadActual = 0;
-                //Hacemos que se habra la pantalla del listado de productos
-                val intent = Intent(this, Añadir::class.java)
+                actividadActual = 1;
+                val intent = Intent(this, Anadir::class.java)
                 startActivity(intent)
                 true
             }
-
             R.id.eliminar -> {
-                actividadActual = 0;
-                //Hacemos que se habra la pantalla del listado de productos
+                actividadActual = 3;
+
                 val intent = Intent(this, Eliminar::class.java)
                 startActivity(intent)
                 true
             }
 
             R.id.modificar -> {
-                actividadActual = 0;
-                //Hacemos que se habra la pantalla del listado de productos
+                actividadActual = 2;
                 val intent = Intent(this, Modificar::class.java)
                 startActivity(intent)
                 true

@@ -22,6 +22,18 @@
             android:exported="false">
         </activity>
         <activity
+            android:name=".Anadir"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".Eliminar"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".Modificar"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".SplashScreen"
             android:exported="true"
             android:theme="@style/SplashTheme">

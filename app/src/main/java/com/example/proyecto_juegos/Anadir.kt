@@ -1,45 +1,48 @@
 package com.example.proyecto_juegos
-import android.os.Bundle
-import android.widget.Toast
-import com.example.proyecto_juegos.databinding.ActivityModificarBinding
-import com.google.firebase.firestore.FirebaseFirestore
-class Modificar : ActivityWithMenus(){
 
-    private lateinit var binding: ActivityModificarBinding
+import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
+import com.example.proyecto_juegos.databinding.ActivityAnadirBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import android.widget.Toast
+
+class Anadir : ActivityWithMenus() {
+
+    private lateinit var binding: ActivityAnadirBinding
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityModificarBinding.inflate(layoutInflater)
+        binding = ActivityAnadirBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.modificar.setOnClickListener {
+        binding.Insertar.setOnClickListener {
             val id = binding.id.text.toString()
             val nombre = binding.nombre.text.toString()
             val descripcion = binding.descripcion.text.toString()
             val precio = binding.precio.text.toString()
 
+            Log.d("Anadir", "Nombre: $nombre, ID: $id, Descripcion: $descripcion, Precio: $precio")
+
             if (id.isNotEmpty() && nombre.isNotEmpty() && descripcion.isNotEmpty() && precio.isNotEmpty()) {
-                db.collection("Productos").document(id)
-                    .update(
-                        mapOf(
-                            "nombre" to nombre,
-                            "descripcion" to descripcion,
-                            "precio" to precio
-                        )
-                    )
-                    .addOnSuccessListener {
+                db.collection("Productos").document(id).set(
+                mapOf(
+                    "nombre" to nombre,
+                    "descripcion" to descripcion,
+                    "precio" to precio
+                )
+                ).addOnSuccessListener {
                         Toast.makeText(
                             this,
-                            "Producto modificado correctamente",
+                            "Producto agregado correctamente",
                             Toast.LENGTH_SHORT
                         ).show()
                         clearFields()
-                    }
-                    .addOnFailureListener { e ->
+                    }.addOnFailureListener { e ->
                         Toast.makeText(
                             this,
-                            "Error al modificar producto: $e",
+                            "Error al agregar producto: $e",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -53,7 +56,7 @@ class Modificar : ActivityWithMenus(){
         }
     }
 
-    private fun clearFields() {
+    private fun clearFields(){
         binding.nombre.text.clear()
         binding.id.text.clear()
         binding.descripcion.text.clear()
