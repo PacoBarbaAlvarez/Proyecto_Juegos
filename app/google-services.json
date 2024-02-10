@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193602382820",
+    "project_id": "proyectojuegos-3b21f",
+    "storage_bucket": "proyectojuegos-3b21f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193602382820:android:24d76a8311d98ea730f5f1",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_juegos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEP_i51zw1XvcCP9LYnqZ3nAVi7sVkwFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

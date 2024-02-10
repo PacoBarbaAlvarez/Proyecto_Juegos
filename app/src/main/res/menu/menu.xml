@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mostrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Ver Lista" />
+    <item
+        android:id="@+id/añadir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Añadir Producto" />
+    <item
+        android:id="@+id/modificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Modificar Producto" />
+    <item
+        android:id="@+id/eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Eliminar producto" />
+    <item
+        android:id="@+id/salir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Salir" />
+    <item
+        android:id="@+id/cerrar"
+        android:icon="@mipmap/ic_launcher"
+        android:title="Cerrar"
+        app:showAsAction="ifRoom"/>
+</menu>
