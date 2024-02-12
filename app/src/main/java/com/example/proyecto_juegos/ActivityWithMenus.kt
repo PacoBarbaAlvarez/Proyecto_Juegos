@@ -8,16 +8,20 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
+// Clase base para actividades con menús
 open class ActivityWithMenus: AppCompatActivity() {
 
+    // Variable estática para rastrear la actividad actual
     companion object {
         var actividadActual = 0;
     }
 
+    // Método para inflar el menú en la barra de acciones
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
 
+        // Habilitar o deshabilitar elementos del menú según la actividad actual
         for (i in 0 until menu.size()) {
             if (i == actividadActual) menu.getItem(i).isEnabled = false
             else menu.getItem(i).isEnabled = true
@@ -25,6 +29,7 @@ open class ActivityWithMenus: AppCompatActivity() {
         return true
     }
 
+    // Método para manejar las acciones del menú
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.mostrar -> {
@@ -55,7 +60,6 @@ open class ActivityWithMenus: AppCompatActivity() {
                 true
             }
 
-
             R.id.salir -> {
                 finishAffinity()
                 true
@@ -67,18 +71,16 @@ open class ActivityWithMenus: AppCompatActivity() {
             }
 
             else -> super.onOptionsItemSelected(item)
-
         }
-
     }
 
+    // Método para mostrar un diálogo de confirmación para cerrar sesión
     private fun mostrarDialogoCerrarSesion() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Cerrar sesión")
         builder.setMessage("¿Estás seguro de que deseas cerrar sesión?")
         builder.setPositiveButton("Sí") { dialogInterface: DialogInterface, _: Int ->
-            // Realizar aquí las acciones para cerrar sesión, como iniciar la actividad de inicio de sesión
-            // Por ejemplo:
+            // Acciones para cerrar sesión, como iniciar la actividad de inicio de sesión
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             dialogInterface.dismiss()
