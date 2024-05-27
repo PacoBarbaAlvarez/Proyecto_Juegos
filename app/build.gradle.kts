@@ -55,4 +55,6 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
     implementation ("com.google.firebase:firebase-firestore-ktx:24.10.2")
     implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation ("androidx.drawerlayout:drawerlayout:1.2.0")
+    implementation ("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
 }

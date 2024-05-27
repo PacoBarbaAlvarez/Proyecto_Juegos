@@ -30,8 +30,7 @@ class Registrar : AppCompatActivity() {
                     binding.Correo.text.toString(), binding.ContraseA.text.toString()
                 )
                     .addOnCompleteListener{
-                        if(it.isSuccessful){
-                            // Si el registro es exitoso, guardar el nombre del usuario en Firestore
+                        if(it.isSuccessful){             // Si el registro es exitoso, guardar el nombre del usuario en Firestore
                             db.collection("usuarios").document(binding.Correo.text.toString())
                                 .set(mapOf(
                                     "nombre" to binding.Nombre.text.toString(),
@@ -43,6 +42,7 @@ class Registrar : AppCompatActivity() {
                         else{
                             // Mostrar un mensaje Toast si no se pudo registrar el usuario
                             Toast.makeText(this,"No se ha  podido registrar el usuario", Toast.LENGTH_LONG).show()
+
                         }
                     }
             }
