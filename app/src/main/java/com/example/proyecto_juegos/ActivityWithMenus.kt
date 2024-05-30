@@ -53,9 +53,9 @@ abstract class ActivityWithMenus: AppCompatActivity(), NavigationView.OnNavigati
         return true
     }
 
-    // Método para manejar las acciones del menú
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
             R.id.mostrar -> {
                 actividadActual = 0;
                 val intent = Intent(this, Listado::class.java)
@@ -97,6 +97,7 @@ abstract class ActivityWithMenus: AppCompatActivity(), NavigationView.OnNavigati
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 
     // Método para mostrar un diálogo de confirmación para cerrar sesión
     private fun mostrarDialogoCerrarSesion() {

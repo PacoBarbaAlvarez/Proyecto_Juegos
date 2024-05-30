@@ -26,5 +26,4 @@
         android:paddingTop="16dp"
         android:text="Codelia"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-
 </LinearLayout>
