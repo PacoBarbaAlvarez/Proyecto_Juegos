@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyecto_juegos.adapter.ProductoAdapter
 import com.example.proyecto_juegos.databinding.ActivityListadoBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import android.util.Log
 
 // Clase Listado que extiende de ActivityWithMenus
 class Listado : ActivityWithMenus() {
@@ -16,12 +17,11 @@ class Listado : ActivityWithMenus() {
     private lateinit var binding: ActivityListadoBinding
     private val db = FirebaseFirestore.getInstance()
     private lateinit var productoAdapter: ProductoAdapter
-    private lateinit var productosList: MutableList<Productos>
+    private var productosList: MutableList<Productos> = mutableListOf()
 
     // Método onCreate para inicializar la actividad
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         // Inflar el diseño de la actividad y establecerlo como contenido de la vista
         binding = ActivityListadoBinding.inflate(layoutInflater)
@@ -29,7 +29,7 @@ class Listado : ActivityWithMenus() {
 
         // Configuración del RecyclerView
         binding.recycler.layoutManager = LinearLayoutManager(this)
-        productoAdapter = ProductoAdapter(emptyList()) // Adaptador inicialmente vacío
+        productoAdapter = ProductoAdapter(productosList) // Adaptador inicialmente vacío
         binding.recycler.adapter = productoAdapter
 
         // Agrega un listener al campo de filtro para realizar búsquedas dinámicas
@@ -40,31 +40,23 @@ class Listado : ActivityWithMenus() {
             })
         }
 
-
         // Obtener los datos de Firebase
-        obtenerDatosFirebase()
+        cargarDatos()
     }
 
-    // Método para obtener los datos de Firebase y actualizar el adaptador del RecyclerView
-    private fun obtenerDatosFirebase() {
-        db.collection("Productos")
-            .get()
-            .addOnSuccessListener { result ->
-                productosList = mutableListOf()
-                for (document in result) {
-                    // Obtener nombre, descripción y precio del documento y crear un objeto Productos
-                    val nombre = document.getString("nombre") ?: ""
-                    val descripcion = document.getString("descripcion") ?: ""
-                    val precio = document.getString("precio") ?: ""
-                    val producto = Productos(nombre, descripcion, precio)
-                    productosList.add(producto) // Agregar el producto a la lista
-                }
-                // Actualizar el adaptador con los datos obtenidos
-                productoAdapter.actualizarOfertas(productosList)
+    private fun cargarDatos() {
+        db.collection("Productos").get().addOnSuccessListener { carga ->
+            productosList.clear()
+
+            carga.forEach { document ->
+                val producto = document.toObject(Productos::class.java)
+                productosList.add(producto)
             }
-            .addOnFailureListener { exception ->
-                // Manejar errores y mostrar un Toast en caso de error
-                Toast.makeText(this, "Error al obtener los datos: $exception", Toast.LENGTH_SHORT).show()
-            }
+
+            productoAdapter.notifyDataSetChanged()
+        }.addOnFailureListener { exception ->
+            Log.e("Cargar", "Error en la obtención de productos", exception)
+            Toast.makeText(this, "Error al obtener los datos: $exception", Toast.LENGTH_SHORT).show()
+        }
     }
 }

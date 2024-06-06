@@ -7,18 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".Listado">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="415dp"
-        android:layout_height="657dp"
+    <!-- Mueve el fondo al principio para que quede detrás de todos los otros elementos -->
+    <ImageView
+        android:id="@+id/fondolista"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.3"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondolista"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filtro" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/filtro"
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="72dp"
         android:ems="10"
         android:inputType="text"
@@ -28,4 +32,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filtro" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

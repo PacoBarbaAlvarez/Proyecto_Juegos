@@ -17,7 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
+    <ImageButton
+        android:id="@+id/imagencard"
+        android:layout_width="344dp"
+        android:layout_height="154dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fondo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fondo"
+        app:layout_constraintVertical_bias="0.657"
+        android:background="@drawable/marco" />
     <EditText
         android:id="@+id/precio"
         android:layout_width="179dp"
@@ -79,10 +89,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="240dp"
         android:layout_marginEnd="146dp"
         android:text="Modificar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/precio" />
 
