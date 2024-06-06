@@ -14,10 +14,7 @@ import com.google.android.material.navigation.DrawerLayoutUtils
 import com.google.android.material.navigation.NavigationView
 
 // Clase base para actividades con menús
-abstract class ActivityWithMenus: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    private lateinit var drawer: DrawerLayout
-    private lateinit var toggle: ActionBarDrawerToggle
+open class ActivityWithMenus: AppCompatActivity(){
 
 
     // Variable estática para rastrear la actividad actual
@@ -30,21 +27,6 @@ abstract class ActivityWithMenus: AppCompatActivity(), NavigationView.OnNavigati
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar_main)
-        setSupportActionBar(toolbar)
-
-        drawer = findViewById(R.id.drawer_layout)
-
-        toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-
-        drawer.addDrawerListener(toggle)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
-
-        val navigationView: NavigationView = findViewById(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
-
         // Habilitar o deshabilitar elementos del menú según la actividad actual
         for (i in 0 until menu.size()) {
             if (i == actividadActual) menu.getItem(i).isEnabled = false
@@ -54,7 +36,7 @@ abstract class ActivityWithMenus: AppCompatActivity(), NavigationView.OnNavigati
     }
 
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.mostrar -> {
                 actividadActual = 0;
